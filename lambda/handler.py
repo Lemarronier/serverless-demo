@@ -61,7 +61,7 @@ def handler(event, context):
     elif route == "/contact" and method == "GET":
 
         try:
-            items = table.get_item(Key={})
+            items = table.scan()['Items']
             return {
                 "statusCode": 200,
                 "body": json.dumps(items)
