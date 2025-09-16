@@ -58,6 +58,20 @@ def handler(event, context):
                 "body": json.dumps({"error": str(e)})
             }
 
+    elif route == "/contact" and method == "GET":
+
+        try:
+            items = table.get_item(Key={})
+            return {
+                "statusCode": 200,
+                "body": json.dumps(items)
+            }
+        except Exception as e:
+            return {
+                "statusCode": 500,
+                "body": json.dumps({"error": str(e)})
+            }
+
     else:
         return {
             "statusCode": 404,
